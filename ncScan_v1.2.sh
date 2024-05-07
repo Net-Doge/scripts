@@ -1,4 +1,5 @@
 #!/bin/bash
+#Created by Phantom115
 echo "         ▄              ▄"
 echo "        ▌▒█           ▄▀▒▌"
 echo "        ▌▒▒█        ▄▀▒▒▒▐"
