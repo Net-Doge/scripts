@@ -1,6 +1,4 @@
 #!/bin/bash
-#This script was developed by Phantom115
-#SET THE STARTING OCTET HERE
 echo "         ▄              ▄"
 echo "        ▌▒█           ▄▀▒▌"
 echo "        ▌▒▒█        ▄▀▒▒▒▐"
@@ -21,7 +19,8 @@ echo "    ▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀"
 echo "      ▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀"
 echo "         ▒▒▒▒▒▒▒▒▒▒▀▀"
 
-net="192.168.10"
+echo "Enter the first 3 octets of the network you want to scan: "
+read net
 echo "Scanning $net network, enter last octet start: "
 read nStart
 echo "Enter last octet end: "
@@ -30,6 +29,8 @@ read nEnd
 echo "scanning $net.$nStart - $nEnd"
 pStart="1"
 pEnd="1000"
+
+#for NUMBER in RANGE 
 
 for ((x=$nStart; $x<=$nEnd; x++))
 do
