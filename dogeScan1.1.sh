@@ -33,8 +33,8 @@ do
     echo "Scanning $net.$i.XXX"
     for x in {1..254}
     do
-        timeout 0.01 ping -c 1 $net.$i.$x 2>&1 | grep "bytes from" 2>&1 
-        (timeout 0.01 ping -c 1 $net.$i.$x 2>&1 | grep "bytes from" 2>&1) | grep -E -o '([0-9]{1,3}\.){3}[0-9]{1,3}' >> pings.txt
+        timeout 0.15 ping -c 1 $net.$i.$x 2>&1 | grep "bytes from" 2>&1 
+        (timeout 0.15 ping -c 1 $net.$i.$x 2>&1 | grep "bytes from" 2>&1) | grep -E -o '([0-9]{1,3}\.){3}[0-9]{1,3}' >> pings.txt
     done
 done
 echo "pings.txt Updated!"
@@ -45,8 +45,8 @@ while IFS= read -r line; do
     echo "Scanning $line Ports $pStart-$pEnd"
     for ((i=$pStart; $i<=$pEnd; i++))
     do
-        (timeout 0.01 nc -nvzw1 $line $i 2>&1 | grep -E 'succ|open') | awk '{ print "ADDRESS: " $2 " PORT: " $3 " SERVICE:" $4 " STATUS: " $5 }' 
-        (timeout 0.01 nc -nvzw1 $line $i 2>&1 | grep -E 'succ|open') | awk '{ print "ADDRESS: " $2 " PORT: " $3 " SERVICE:" $4 " STATUS: " $5 }' >> openPorts.txt
+        (timeout 0.15 nc -nvzw1 $line $i 2>&1 | grep -E 'succ|open') | awk '{ print "ADDRESS: " $2 " PORT: " $3 " SERVICE:" $4 " STATUS: " $5 }' 
+        (timeout 0.15 nc -nvzw1 $line $i 2>&1 | grep -E 'succ|open') | awk '{ print "ADDRESS: " $2 " PORT: " $3 " SERVICE:" $4 " STATUS: " $5 }' >> openPorts.txt
     done
 done < "pings.txt"
 echo "Contents Added to openPorts.txt"
